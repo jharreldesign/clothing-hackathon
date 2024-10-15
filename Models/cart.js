@@ -11,10 +11,8 @@ const Cart = new Schema(
           required: true,
         },
         quantity: { type: Number, required: true },
-        price: { type: Number, required: true },
       },
     ],
-    totalPrice: { type: Number, required: true },
   },
   { timestamps: true }
 );
