@@ -1,17 +1,18 @@
-// const Cart = require('../models/cart')
 const Product = require('../models/product')
-// const User = require('../models/user')
 
+// get all products
 const getAllProducts = async (req, res) => {
     const products = await Product.find()
     res.json(products)
 }
 
+// get single product by id
 const getProductById = async (req, res) => {
     const product = await Product.findById(req.params.id)
     res.json(product)
 }
 
+// get products by brand name
 const getProductsByBrand = async (req, res) => {
     try {
     const { brand } = req.params
@@ -25,6 +26,7 @@ const getProductsByBrand = async (req, res) => {
     }
 }
 
+// get all pants of a specific product category (13)
 const getJeans = async (req, res) => {
     try {
     const products = await Product.find({ productCategory: 'Jeans' })
@@ -121,7 +123,67 @@ const getJoggers = async (req, res) => {
     }
 }
 
-// products filtered at or below max price input
+const getDrawstringPants = async (req, res) => {
+    try {
+    const products = await Product.find({ productCategory: 'Drawstring Pants' })
+    if (!products) {
+        return res.status(404).json({message: "It's a draw! Drawstring Pants not found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getPatternedPants = async (req, res) => {
+    try {
+    const products = await Product.find({ productCategory: 'Patterned Pants' })
+    if (!products) {
+        return res.status(404).json({message: "This is starting to become a pattern...Patterned Pants not found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getChinos = async (req, res) => {
+    try {
+    const products = await Product.find({ productCategory: 'Chinos' })
+    if (!products) {
+        return res.status(404).json({message: "Ruh roh! Chinos not found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getPalazzoPants = async (req, res) => {
+    try {
+    const products = await Product.find({ productCategory: 'Palazzo Pants' })
+    if (!products) {
+        return res.status(404).json({message: "Dun dun DUNNNN. Palazzo Pants not found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getLinenPants = async (req, res) => {
+    try {
+    const products = await Product.find({ productCategory: 'Linen Pants' })
+    if (!products) {
+        return res.status(404).json({message: "If these pants were a member of the Beatles, they'd be...John Linens. Anyway, Linen Pants not found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+// get products filtered at or below max price input
 const getProductsMaxPrice = async (req, res)=> {
     try {
     const { max } = parseFloat(req.params)
@@ -135,6 +197,7 @@ const getProductsMaxPrice = async (req, res)=> {
     }
 }
 
+// get products sorted by price ascending
 const getProductsPriceAscending = async (req, res) => {
     try {
         const products = await Product.find().sort({ productPrice: 1 })
@@ -147,11 +210,39 @@ const getProductsPriceAscending = async (req, res) => {
     }
 }
 
+// get products sorted by price descending
+const getProductsPriceDescending = async (req, res) => {
+    try {
+        const products = await Product.find().sort({ productPrice: -1 })
+        if (!products || products.length === 0) {
+            return res.status(404).json({ message: "Products not found! Womp, womp." })
+        }
+        res.json(products)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
 
-// on sale
+// get all products on sale
+const getProductsOnSale = async (req, res) => {
+    try {
+    const products = await Product.find({ onSale: true })
+    if (!products) {
+        return res.status(404).json({message: "Looks like these pants sale'd away! No sale products found!"})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
 
-
-
+//still working on below
+// const getProductsHighlyRated = (req, res)=> {
+//     try {
+//     const rating = await parseFloat(Product.rating)
+//     const products = await Product.filter(product => product.rating >= 4.7)
+//     res.json(product)
+// }
 // in stock
 // low stock? 
 
@@ -214,5 +305,12 @@ module.exports = {
     updateProduct,
     deleteProduct,
     getProductsMaxPrice,
-    getProductsPriceAscending
+    getProductsPriceAscending,
+    getDrawstringPants,
+    getPatternedPants,
+    getChinos,
+    getPalazzoPants,
+    getLinenPants,
+    getProductsPriceDescending,
+    getProductsOnSale
 }

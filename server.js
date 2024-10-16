@@ -30,10 +30,12 @@ app.get('/products/joggers', productController.getJoggers)
 app.get('/products/drawstringpants', productController.getDrawstringPants)
 app.get('/products/patternedpants', productController.getPatternedPants)
 app.get('/products/chinos', productController.getChinos)
-app.get('/products/palazzppants', productController.getPalazzpPants)
+app.get('/products/palazzopants', productController.getPalazzoPants)
 app.get('/products/linenpants', productController.getLinenPants)
+app.get('/products/onSale', productController.getProductsOnSale)
 
 app.get('/products/price/ascending', productController.getProductsPriceAscending)
+app.get('/products/price/descending', productController.getProductsPriceDescending)
 
 // show routes
 app.get('/products/:id', productController.getProductById)
