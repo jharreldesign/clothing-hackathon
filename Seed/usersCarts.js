@@ -1,40 +1,49 @@
-const db = require(`../db`);
-const { User } = require(`../models`);
-const { Cart } = require(`../models`);
+const db = require("../db");
+const { User, Cart } = require("../models");
 
-db.on(`error`, console.error.bind(console, `MongoDB connection error:`));
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-const exampleUser = await new User({
-  name: "John Doe",
-  email: "john.doe@example.com",
-  address: [
-    {
-      street: "123 Maple Street",
-      city: "Springfield",
-      state: "IL",
-      zipCode: "62704",
-      country: "USA",
-    },
-  ],
-  phoneNumber: "555-123-4567",
-  shoppingCart: exampleCart._id,
-});
+const seedUsersAndCarts = async () => {
+  try {
+    const exampleCart = await new Cart({
+      items: [
+        {
+          productId: "670ffa00f2bc4ce66a63ea0d",
+          quantity: 1,
+        },
+        {
+          productId: "670ffa00f2bc4ce66a63ea16",
+          quantity: 2,
+        },
+      ],
+    }).save();
 
-const exampleCart = await new Cart({
-  userId: exampleUser._id,
-  items: [
-    {
-      productId: "Product 1",
-      quantity: 1,
-    },
-    {
-      productId: "Product 2",
-      quantity: 2,
-    },
-  ],
-});
+    const exampleUser = await new User({
+      name: "John Doe",
+      email: "john.doe@example.com",
+      address: [
+        {
+          street: "123 Maple Street",
+          city: "Springfield",
+          state: "IL",
+          zipCode: "62704",
+          country: "USA",
+        },
+      ],
+      phoneNumber: "555-123-4567",
+      shoppingCart: exampleCart._id,
+    }).save();
 
-await exampleUser.save();
-await exampleCart.save();
-console.log("Example user created:", exampleUser);
-console.log("Example cart created:", exampleCart);
+    exampleCart.userId = exampleUser._id;
+    await exampleCart.save();
+
+    console.log("Example cart created:", exampleCart);
+    console.log("Example user created:", exampleUser);
+  } catch (error) {
+    console.error("Error seeding users and carts:", error);
+  } finally {
+    db.close();
+  }
+};
+
+seedUsersAndCarts();

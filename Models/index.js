@@ -1,14 +1,10 @@
-const mongoose = require ('mongoose');
-const userSchema = require ('./user');
-const cartSchema = require('./cart');
-const productSchema = require('./product');
-
-const User = mongoose.model('User', userSchema);
-const Cart = mongoose.model('Cart', cartSchema);
-const Product = mongoose.model('Product', productSchema);
+const mongoose = require("mongoose");
+const User = require("./user");
+const Cart = require("./cart");
+const Product = require("./product"); // Now this is the model, not the schema
 
 module.exports = {
-    User,
-    Cart,
-    Product
-}
+  User,
+  Cart,
+  Product,
+};
