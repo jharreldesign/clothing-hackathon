@@ -8,11 +8,52 @@
 }
 
 /* Hero section */
-.hero-section {
+/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.z1dyxQCSUum2DSxkDLIH5gHaC5%26pid%3DApi&f=1&ipt=fa61f64bc1149b4c491bea905fd1a9b1551e2004a645c3a15fff0f58b12802e9&ipo=images */
+
+.hero {
+  position: relative;
+  width: 100%;
   height: 50vh;
-  background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tomorrowsworld.org%2Fsites%2Fdefault%2Ffiles%2Fother_publications%2Ffeatured_image%2Fpants_on_fire.jpg&f=1&nofb=1&ipt=abcce31bf685c8a55fb9fc05153abdce2578bbfb88138f624aa49d10b35a7625&ipo=images") center no-repeat;
-  background-size: cover;
+  background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.z1dyxQCSUum2DSxkDLIH5gHaC5%26pid%3DApi&f=1&ipt=fa61f64bc1149b4c491bea905fd1a9b1551e2004a645c3a15fff0f58b12802e9&ipo=images') no-repeat center center/cover;
+  background-position: center 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
 }
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.5); /* Black overlay */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero-button:hover {
+  background-color: #f0f0f0; /* Lighten on hover */
+}
+
+
 /* Nav */
 nav {
   height: 70px;
@@ -28,78 +69,294 @@ nav {
 
 .nav-items,
 .overview,
-.account {
+.account,
+.material-symbols-outlined {
   display: flex;
 }
+
 .overview {
   margin-right: 4rem;
 }
 
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
 .logo h2 {
-    font-style: italic;
-    color: rgb(0, 206, 206);
-    cursor: pointer;
-    margin: 0 0.5rem;
-  }
-  nav li {
-    list-style: none;
-    margin: 0 0.5rem;
-  }
-  nav a {
-    text-decoration: none;
-    color: rgb(220, 220, 220);
-  }
-  nav a:hover {
-    color: #a0ebfd;
-  }
-  nav a::after {
-    content: "";
-    display: block;
-    height: 3px;
-    background: #a0ebfd;
-    width: 0%;
-    transition: all ease-in-out 300ms;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
+  font-style: italic;
+  color: rgb(0, 206, 206);
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
 
-  h1 {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-  }
+nav li {
+  list-style: none;
+  margin: 0 0.5rem;
+}
 
-  /* CARD GRID */
-  .item-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px;
+nav a {
+  text-decoration: none;
+  color: rgb(220, 220, 220);
+}
+
+nav a:hover {
+  color: #a0ebfd;
+}
+
+nav a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: #a0ebfd;
+  width: 0%;
+  transition: all ease-in-out 300ms;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+h1 {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD GRID */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 .product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
 }
 
 .product-card img {
-    max-width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 15px;
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
 }
 
 .product-card h2 {
-    font-size: 18px;
-    margin: 15px 0 10px;
+  font-size: 18px;
+  margin: 15px 0 10px;
 }
 
 .product-card p {
-    font-size: 16px;
-    color: #333;
+  font-size: 16px;
+  color: #333;
 }
+
+/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fjeans-pants-store-shelf-blue-jeans-denim-collection-jeans-stacked-jeans-pants-store-shelf-blue-jeans-denim-115686072.jpg&f=1&nofb=1&ipt=2382dd07b07ebc9e72601593a91832f94059d35a615e5fc25ce9a1aad86203f3&ipo=images */
+/* MAILING BANNER */
+
+.mailing-signup {
+  position: relative;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fjeans-pants-store-shelf-blue-jeans-denim-collection-jeans-stacked-jeans-pants-store-shelf-blue-jeans-denim-115686072.jpg&f=1&nofb=1&ipt=2382dd07b07ebc9e72601593a91832f94059d35a615e5fc25ce9a1aad86203f3&ipo=images');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center 60%; 
+  color: white; 
+  text-align: center; 
+  padding: 50px; 
+  margin-bottom: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1; 
+}
+
+.mailing-signup h2,
+.mailing-signup p {
+  position: relative; 
+  z-index: 2; 
+}
+
+.mailing-signup-button {
+  background-color: black; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+  z-index: 2; 
+  position: relative; 
+}
+
+.mailing-signup-button:hover {
+  background-color: white; 
+  color: black; 
+}
+
+/* CAROUSEL */
+
+.product-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%; 
+}
+
+.carousel-button {
+  z-index: 10;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.prev {
+  left: 10px; 
+}
+
+.next {
+  right: 10px; 
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; 
+}
+
+.carousel-slide {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.carousel-slide img {
+  height: 200px; 
+  width: auto; 
+}
+
+/* MIDDLE CARD */
+.product-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.product-card {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.product-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.product-button {
+  background-color: #000;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-button:hover {
+  background-color: #333;
+}
+
+/* FOOTER */
+footer {
+  background: rgb(20, 20, 20);
+  color: rgb(220, 220, 220);
+  padding: 20px 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-items,
+.overview,
+.account {
+  display: flex;
+}
+
+.overview {
+  margin-right: 4rem;
+}
+
+footer li {
+  list-style: none;
+  margin: 0 0.5rem;
+}
+
+footer a {
+  text-decoration: none; 
+  color: white; 
+}
+
+footer a:hover {
+  color: #a0ebfd; 
+}
+

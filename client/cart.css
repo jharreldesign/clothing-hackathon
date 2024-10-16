@@ -1,0 +1,201 @@
+/* Nav */
+nav {
+    height: 70px;
+    background: rgb(20, 20, 20);
+    color: rgb(220, 220, 220);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+  }
+  
+  .nav-items,
+  .overview,
+  .account,
+  .material-symbols-outlined {
+    display: flex;
+  }
+  
+  .overview {
+    margin-right: 4rem;
+  }
+  
+  .material-symbols-outlined {
+    cursor: pointer;
+  }
+  
+  .logo h2 {
+    font-style: italic;
+    color: rgb(0, 206, 206);
+    cursor: pointer;
+    margin: 0 0.5rem;
+  }
+  
+  nav li {
+    list-style: none;
+    margin: 0 0.5rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: rgb(220, 220, 220);
+  }
+  
+  nav a:hover {
+    color: #a0ebfd;
+  }
+  
+  nav a::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: #a0ebfd;
+    width: 0%;
+    transition: all ease-in-out 300ms;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  h1 {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fssl.quiksilver.com%2Fstatic%2FDC%2Fdefault%2Fcategory-assets%2Fexperiences%2Frecurring%2Fhowto%2Fimg%2Fhow-to%2Fsnow%2Fhow-to-choose-snowboard-pants%2Fsnowboard-pants-banner.jpg&f=1&nofb=1&ipt=a0d4b35bbb62eceaa169a6c58e948eb606b25fffe5e04750284c2814f790e7a9&ipo=images */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.z1dyxQCSUum2DSxkDLIH5gHaC5%26pid%3DApi&f=1&ipt=fa61f64bc1149b4c491bea905fd1a9b1551e2004a645c3a15fff0f58b12802e9&ipo=images') no-repeat center center/cover;
+    background-position: center 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-content {
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 5px;
+    border-radius: 8px;
+  }
+  
+  .hero h1 {
+    font-size: 30px;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.total {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.2em;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #247ede;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #70aae8;
+}
+
+/* FOOTER */
+footer {
+    background: rgb(20, 20, 20);
+    color: rgb(220, 220, 220);
+    padding: 20px 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+}
+
+  
+  .footer-items,
+  .overview,
+  .account {
+    display: flex;
+  }
+  
+  .overview {
+    margin-right: 4rem;
+  }
+  
+  footer li {
+    list-style: none;
+    margin: 0 0.5rem;
+  }
+  
+  footer a {
+    text-decoration: none; 
+    color: white; 
+  }
+  
+  footer a:hover {
+    color: #a0ebfd; 
+  }
+  
+  
