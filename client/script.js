@@ -16,3 +16,7 @@ document.querySelector('.prev').addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + (totalSlides - itemsToShow + 1)) % (totalSlides - itemsToShow + 1); // Loop back to end
   updateCarousel();
 });
+
+// Search bar drop down into filter options
+// Go to product specific page when icon is clicked
+//

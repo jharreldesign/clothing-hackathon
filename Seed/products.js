@@ -1,5 +1,5 @@
 const db = require(`../db`);
-const Product = require(`../models/product`);
+const { Product } = require(`../models`);
 
 db.on(`error`, console.error.bind(console, `MongoDB connection error:`));
 
@@ -35,7 +35,7 @@ const products = [
   {
     productName: "Cargo Not Found",
     productDescription:
-      "We lost track of how many pockets these cargo pants have... Seriously, it’s like a black hole for your stuff.",
+      "We lost track of how many pockets these cargo pants have... Seriously, it's like a black hole for your stuff.",
     productPrice: 42.99,
     productCategory: "Cargo Pants",
     stockQuantity: 80,
@@ -91,7 +91,7 @@ const products = [
   {
     productName: "Culotta Here!",
     productDescription:
-      "These wide-leg culottes are so breezy, you'll feel like you're on vacation – even if you're just getting groceries.",
+      "These wide-leg culottes are so breezy, you'll feel like you're on vacation - even if you're just getting groceries.",
     productPrice: 39.99,
     productCategory: "Culottes",
     stockQuantity: 70,
@@ -203,7 +203,7 @@ const products = [
   {
     productName: "Chino What You Did Last Summer",
     productDescription:
-      "These classic chinos know all your summer secrets... and they’re here to help you keep them stylishly under wraps.",
+      "These classic chinos know all your summer secrets... and they're here to help you keep them stylishly under wraps.",
     productPrice: 40.0,
     productCategory: "Chinos",
     stockQuantity: 60,
@@ -217,7 +217,7 @@ const products = [
   {
     productName: "Denim Impossible",
     productDescription:
-      "Your mission, should you choose to accept it, is to rock these jeans so hard, people won’t know what hit them.",
+      "Your mission, should you choose to accept it, is to rock these jeans so hard, people won't know what hit them.",
     productPrice: 59.99,
     productCategory: "Jeans",
     stockQuantity: 100,
@@ -231,7 +231,7 @@ const products = [
   {
     productName: "Jogging My Memory",
     productDescription:
-      "Can’t remember the last time you wore pants this comfy? Don’t worry, you’ll never forget these joggers.",
+      "Can't remember the last time you wore pants this comfy? Don't worry, you'll never forget these joggers.",
     productPrice: 38.0,
     productCategory: "Joggers",
     stockQuantity: 80,
@@ -259,7 +259,7 @@ const products = [
   {
     productName: "Chino You Can Dance",
     productDescription:
-      "Chinos so flexible, they’ll have you busting moves on the dance floor. Perfect for spontaneous breakdance battles.",
+      "Chinos so flexible, they'll have you busting moves on the dance floor. Perfect for spontaneous breakdance battles.",
     productPrice: 39.5,
     productCategory: "Chinos",
     stockQuantity: 110,
@@ -287,7 +287,7 @@ const products = [
   {
     productName: "Yoga Pants? Namaste Here",
     productDescription:
-      "These yoga pants are so comfortable, you’ll want to skip the workout and just meditate on your couch.",
+      "These yoga pants are so comfortable, you'll want to skip the workout and just meditate on your couch.",
     productPrice: 32.0,
     productCategory: "Leggings",
     stockQuantity: 150,
@@ -301,7 +301,7 @@ const products = [
   {
     productName: "Plaid You Came",
     productDescription:
-      "For those days when solid colors just aren’t cutting it, these plaid pants will make a statement and then some.",
+      "For those days when solid colors just aren't cutting it, these plaid pants will make a statement and then some.",
     productPrice: 48.0,
     productCategory: "Patterned Pants",
     stockQuantity: 45,
@@ -343,7 +343,7 @@ const products = [
   {
     productName: "The Pants Are Coming From Inside the House!",
     productDescription:
-      "Comfy lounge pants perfect for binge-watching your favorite horror films. Spoiler: they’ll never want to leave.",
+      "Comfy lounge pants perfect for binge-watching your favorite horror films. Spoiler: they'll never want to leave.",
     productPrice: 33.99,
     productCategory: "Sweatpants",
     stockQuantity: 125,
@@ -356,14 +356,16 @@ const products = [
   },
 ];
 
-await Product.deleteMany();
-
-await Product.insertMany(products);
-console.log(`Created products!`);
-
 const run = async () => {
-  await main();
-  db.close();
+  try {
+    await Product.deleteMany();
+    await Product.insertMany(products);
+    console.log("Created products!");
+  } catch (error) {
+    console.error("Error seeding products:", error);
+  } finally {
+    db.close();
+  }
 };
 
 run();
