@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const PORT = process.env.PORT || 3001
 const db = require("./db")
 const bodyParser = require("body-parser")
@@ -11,6 +12,7 @@ const userController = require("./controllers/userController")
 app.use(express.json())
 app.use(logger("dev"))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get("/", async (req, res) => {
   res.send("Our pants!! They're on fire!!")
@@ -19,6 +21,7 @@ app.get("/", async (req, res) => {
 // index routes
 app.get("/products", productController.getAllProducts)
 app.get("/users", userController.getAllUsers)
+app.get("/carts", cartController.getAllCarts)
 
 app.get("/products/leggings", productController.getLeggings)
 app.get("/products/jeans", productController.getJeans)
@@ -52,6 +55,8 @@ app.get("/products/size/xl", productController.getProductsXL)
 // show routes
 app.get("/products/:id", productController.getProductById)
 app.get("/users/:id", userController.getUserById)
+app.get("/carts/:id", cartController.getCartById)
+app.get("/cart/:userId", cartController.getCartByUserId)
 
 app.get("/products/brands/:brand", productController.getProductsByBrand)
 app.get("/users/name/:name", userController.getUserByName)
