@@ -1,7 +1,7 @@
-const db = require("../db");
-const { User, Cart } = require("../models");
+const db = require("../db")
+const { User, Cart } = require("../models")
 
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.on("error", console.error.bind(console, "MongoDB connection error:"))
 
 const seedUsersAndCarts = async () => {
   try {
@@ -16,7 +16,7 @@ const seedUsersAndCarts = async () => {
           quantity: 2,
         },
       ],
-    }).save();
+    }).save()
 
     const exampleUser = await new User({
       name: "John Doe",
@@ -32,18 +32,18 @@ const seedUsersAndCarts = async () => {
       ],
       phoneNumber: "555-123-4567",
       shoppingCart: exampleCart._id,
-    }).save();
+    }).save()
 
-    exampleCart.userId = exampleUser._id;
-    await exampleCart.save();
+    exampleCart.userId = exampleUser._id
+    await exampleCart.save()
 
-    console.log("Example cart created:", exampleCart);
-    console.log("Example user created:", exampleUser);
+    console.log("Example cart created:", exampleCart)
+    console.log("Example user created:", exampleUser)
   } catch (error) {
-    console.error("Error seeding users and carts:", error);
+    console.error("Error seeding users and carts:", error)
   } finally {
-    db.close();
+    db.close()
   }
-};
+}
 
-seedUsersAndCarts();
+seedUsersAndCarts()

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const mongoose = require("mongoose")
+const { Schema } = mongoose
 
 const userSchema = new Schema(
   {
@@ -18,8 +18,8 @@ const userSchema = new Schema(
     shoppingCart: { type: Schema.Types.ObjectId, ref: "Cart" },
   },
   { timestamps: true }
-);
+)
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema)
 
-module.exports = User;
+module.exports = User

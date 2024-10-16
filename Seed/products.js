@@ -1,7 +1,7 @@
-const db = require(`../db`);
-const { Product } = require(`../models`);
+const db = require(`../db`)
+const { Product } = require(`../models`)
 
-db.on(`error`, console.error.bind(console, `MongoDB connection error:`));
+db.on(`error`, console.error.bind(console, `MongoDB connection error:`))
 
 const products = [
   {
@@ -354,18 +354,18 @@ const products = [
     color: ["Gray", "Charcoal", "Black"],
     size: ["M", "L", "XL"],
   },
-];
+]
 
 const run = async () => {
   try {
-    await Product.deleteMany();
-    await Product.insertMany(products);
-    console.log("Created products!");
+    await Product.deleteMany()
+    await Product.insertMany(products)
+    console.log("Created products!")
   } catch (error) {
-    console.error("Error seeding products:", error);
+    console.error("Error seeding products:", error)
   } finally {
-    db.close();
+    db.close()
   }
-};
+}
 
-run();
+run()
