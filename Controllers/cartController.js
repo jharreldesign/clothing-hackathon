@@ -7,6 +7,22 @@ const getAllCarts = async (req, res) => {
   res.json(carts)
 }
 
+const getCartByUserId = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ userId: req.params.userId }).populate(
+      `items.productId`
+    )
+
+    if (!cart) {
+      return res.status(404).json({ message: "Cart not found!" })
+    }
+
+    res.json(cart)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 // CRUD functions below:
 // create a cart
 const createCart = async (req, res) => {
@@ -99,5 +115,6 @@ module.exports = {
   getCartById,
   updateCart,
   deleteCart,
+  getCartByUserId,
   //    addItemToCart
 }
