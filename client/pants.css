@@ -73,13 +73,13 @@ body {
 }
 
 
-/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fssl.quiksilver.com%2Fstatic%2FDC%2Fdefault%2Fcategory-assets%2Fexperiences%2Frecurring%2Fhowto%2Fimg%2Fhow-to%2Fsnow%2Fhow-to-choose-snowboard-pants%2Fsnowboard-pants-banner.jpg&f=1&nofb=1&ipt=a0d4b35bbb62eceaa169a6c58e948eb606b25fffe5e04750284c2814f790e7a9&ipo=images */
+/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.le6KRlSYfQBNERf6QrXPSQHaDS%26pid%3DApi&f=1&ipt=7e0bb2ab6a9a69abe3ef9f9df6257793411394526c53b08fc2dd88b46c6f65a4&ipo=images */
 
 .hero {
     position: relative;
     width: 100%;
     height: 30vh;
-    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fssl.quiksilver.com%2Fstatic%2FDC%2Fdefault%2Fcategory-assets%2Fexperiences%2Frecurring%2Fhowto%2Fimg%2Fhow-to%2Fsnow%2Fhow-to-choose-snowboard-pants%2Fsnowboard-pants-banner.jpg&f=1&nofb=1&ipt=a0d4b35bbb62eceaa169a6c58e948eb606b25fffe5e04750284c2814f790e7a9&ipo=images') no-repeat center center/cover;
+    background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.le6KRlSYfQBNERf6QrXPSQHaDS%26pid%3DApi&f=1&ipt=7e0bb2ab6a9a69abe3ef9f9df6257793411394526c53b08fc2dd88b46c6f65a4&ipo=images') no-repeat center center/cover;
     background-position: center 50%;
     display: flex;
     justify-content: center;
