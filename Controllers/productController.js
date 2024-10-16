@@ -363,22 +363,97 @@ const getProductsXL = async (req, res) => {
   try {
     const products = await Product.find({ size: "XL" });
     if (!products) {
-      return res
-        .status(404)
-        .json({ message: "No extra large pants found! Extra bummer! :(" });
+    return res.status(404).json({message: "No extra large pants found! Extra bummer! :("})
     }
-    return res.json(products);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-// colors available
-const blues = await Product.find({
-  color: { $in: ["Blue", "Red and Blue", "Navy", "Dark Indigo", "Teal"] },
-});
-const greens = await Product.find({
-  color: { $in: ["Teal", "Olive", "Green"] },
-});
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+// get products by a specific color group
+const getProductsBlues = async (req, res) => {
+    try {
+        const blues = await Product.find({ color: { $in: ["Blue", "Red and Blue", "Navy", "Light Wash", "Dark Wash", "Dark Indigo", "Teal"] } })
+        if (!blues) {
+            return res.status(404).json({message: "No blues found! That makes us blue. :("})
+        }
+        return res.json(blues)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsGreens = async (req, res) => {
+    try {
+        const greens = await Product.find({ color: { $in: ["Teal", "Olive", "Green"] } })
+        if (!blues) {
+            return res.status(404).json({message: "We're not big salad people...No greens found!"})
+        }
+        return res.json(blues)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsBlacks = async (req, res) => {
+    try {
+        const blacks = await Product.find({ color: { $in: ["Black", "Dark Wash", "Black and White", "Faded Black"] } })
+        if (!blacks) {
+            return res.status(404).json({message: "Dun dun DUNNNN. No black pants found!"})
+        }
+        return res.json(blacks)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsGrayscale = async (req, res) => {
+    try {
+        const grayscale = await Product.find({ color: { $in: ["Gray", "Heather Gray", "Charcoal", "White"] } })
+        if (!grayscale) {
+            return res.status(404).json({message: "No grays found! Womp womp."})
+        }
+        return res.json(grayscale)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsReds = async (req, res) => {
+    try {
+        const reds = await Product.find({ color: { $in: ["Red", "Burgundy", "Red and Blue"] } })
+        if (!reds) {
+            return res.status(404).json({message: "We're not reddy! No reds found!"})
+        }
+        return res.json(reds)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsNeutrals = async (req, res) => {
+    try {
+        const neutrals = await Product.find({ color: { $in: ["Sand", "Brown", "Beige", "Khaki", "White"] } })
+        if (!neutrals) {
+            return res.status(404).json({message: "No neutrals found! We're feeling pretty neutral about it."})
+        }
+        return res.json(neutrals)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
+
+const getProductsMulticolored = async (req, res) => {
+    try {
+        const multicolored = await Product.find({ color: { $in: ["Black and White", "Red and Blue"] } })
+        if (!multicolored) {
+            return res.status(404).json({message: "No multicolored pants found! Where has all the color gone..."})
+        }
+        return res.json(multicolored)
+        }   catch(error) {
+            res.status(500).json({message: error.message})
+        }
+}
 
 // CUD functions below:
 // create a product
@@ -394,17 +469,17 @@ const createProduct = async (req, res) => {
 
 // update a product using id
 const updateProduct = async (req, res) => {
-  try {
-    let { id } = req.params;
-    let product = await Product.findByIdAndUpdate(id, req.body, { new: true });
-    if (product) {
-      return res.status(200).json(product);
+    try {
+        let { id } = req.params
+        let product = await Product.findByIdAndUpdate(id, req.body, { new: true, runValidators: true  })
+        if (product) {
+            return res.status(200).json(product)
+        }
+        throw new Error("Product not found")
+    } catch (error) {
+        return res.status(500).send(error.message)
     }
-    throw new Error("Product not found");
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
+}
 
 // delete a product using id
 const deleteProduct = async (req, res) => {
@@ -418,37 +493,43 @@ const deleteProduct = async (req, res) => {
   } catch (error) {
     return res.status(500).send(error.message);
   }
-};
+}
 
 module.exports = {
-  getAllProducts,
-  getProductById,
-  getProductsByBrand,
-  getJeans,
-  getSweatpants,
-  getJoggers,
-  getSkinnyJeans,
-  getCargoPants,
-  getCulottes,
-  getLeggings,
-  getFlarePants,
-  getDrawstringPants,
-  getPatternedPants,
-  getChinos,
-  getPalazzoPants,
-  getLinenPants,
-  getProductsMaxPrice,
-  getProductsPriceAscending,
-  getProductsPriceDescending,
-  getProductsOnSale,
-  getProductsLowStock,
-  getProductsHighlyRated,
-  getProductsS,
-  getProductsM,
-  getProductsL,
-  getProductsXL,
-
-  createProduct,
-  updateProduct,
-  deleteProduct,
-};
+    getAllProducts,
+    getProductById,
+    getProductsByBrand,
+    getJeans,
+    getSweatpants,
+    getJoggers,
+    getSkinnyJeans,
+    getCargoPants,
+    getCulottes,
+    getLeggings,
+    getFlarePants,
+    getDrawstringPants,
+    getPatternedPants,
+    getChinos,
+    getPalazzoPants,
+    getLinenPants,
+    getProductsMaxPrice,
+    getProductsPriceAscending,
+    getProductsPriceDescending,
+    getProductsOnSale,
+    getProductsLowStock,
+    getProductsHighlyRated,
+    getProductsS,
+    getProductsM,
+    getProductsL,
+    getProductsXL,
+    getProductsBlues,
+    getProductsGreens,
+    getProductsBlacks,
+    getProductsGrayscale,
+    getProductsNeutrals,
+    getProductsReds,
+    getProductsMulticolored,
+    createProduct,
+    updateProduct,
+    deleteProduct,
+}
