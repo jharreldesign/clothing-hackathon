@@ -1,6 +1,6 @@
 const db = require(`../db`);
-const User = require(`../models/user`);
-const Cart = require(`../models/cart`);
+const { User } = require(`../models`);
+const { Cart } = require(`../models`);
 
 db.on(`error`, console.error.bind(console, `MongoDB connection error:`));
 
