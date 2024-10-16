@@ -1,6 +1,13 @@
 const Cart = require('../models/cart')
+const Product = require('../models/product')
 
-//update /CRUD functionality
+// get all carts
+const getAllCarts = async (req, res) => {
+    const carts = await Cart.find()
+    res.json(carts)
+}
+
+// CRUD functions below:
 // create a cart
 const createCart = async (req, res) => {
     try {
@@ -12,7 +19,7 @@ const createCart = async (req, res) => {
     }
 }
 
-// "read" a cart by id
+// read a cart by id (get cart by id)
 const getCartById = async (req, res) => {
     const cart = await Cart.findById(req.params.id)
     res.json(cart)
@@ -22,7 +29,7 @@ const getCartById = async (req, res) => {
 const updateCart = async (req, res) => {
     try {
         let { id } = req.params
-        let cart = await Cart.findByIdAndUpdate(id, req.body, { new: true })
+        let cart = await Cart.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
         if (cart) {
             return res.status(200).json(cart)
         }
@@ -46,9 +53,49 @@ const deleteCart = async (req, res) => {
     }
 }
 
+// add item to Cart using Product id
+// const addItemToCart = async (req, res) => {
+//     try {
+//         let cart = await Cart.findOne({ userId: req.user.id})
+//         if (!cart) {
+//             cart = new Cart({ userId: req.user.id, items: [] })
+//         }
+//         let newItemId = req.params.id
+//         let items = cart.items
+//         let exists = items.some(item => item.productId === newItemId)
+//     if (exists) {
+//         items = items.map(item => {
+//             if (item.productId === newItemId) {
+//                 item.quantity +- 1
+//             }
+//             return item
+//         })
+//     } else {
+//         let newItem = {
+//             productId: newItemId,
+//             quantity: 1
+//         }
+//     }
+        
+//     }
+//     if (!exists) {
+        
+//         items.push(newItem)
+//         await cart.save()
+//     }
+//     return res.json(cart)
+
+//    // if item id is already there, then update the quantity (colors/size control?)   if ()
+//   //  += quantity
+
+
+// }
+
 module.exports = {
+    getAllCarts,
     createCart,
     getCartById,
     updateCart,
-    deleteCart
+    deleteCart,
+//    addItemToCart
 }
