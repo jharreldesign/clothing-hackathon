@@ -300,7 +300,6 @@ module.exports = {
     getCulottes,
     getLeggings,
     getFlarePants,
-    getCulottes,
     createProduct,
     updateProduct,
     deleteProduct,
