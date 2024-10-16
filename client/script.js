@@ -79,5 +79,4 @@ const updateTotalPrice = (items) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   fetchCartData()
-  console.log("Hello!")
 })
