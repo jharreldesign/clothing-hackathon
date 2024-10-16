@@ -16,8 +16,8 @@ app.get('/', async (req, res) => {
     res.send("our pants!! they're on fire!!")
 })
 
-// index routes
-app.get('/products', productController.getAllProducts)
+// index routes //
+app.get('/products', productController.getAllProducts);
 
 app.get('/products/leggings', productController.getLeggings)
 app.get('/products/jeans', productController.getJeans)
