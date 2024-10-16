@@ -61,12 +61,10 @@ const getFlarePants = async (req, res) => {
   try {
     const products = await Product.find({ productCategory: "Flare Pants" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "Uh, oh...Looks like you have no flair! Flare Pants not found!",
-        });
+      return res.status(404).json({
+        message:
+          "Uh, oh...Looks like you have no flair! Flare Pants not found!",
+      });
     }
     res.json(products);
   } catch (error) {
@@ -164,12 +162,10 @@ const getPatternedPants = async (req, res) => {
   try {
     const products = await Product.find({ productCategory: "Patterned Pants" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "This is starting to become a pattern...Patterned Pants not found!",
-        });
+      return res.status(404).json({
+        message:
+          "This is starting to become a pattern...Patterned Pants not found!",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -207,12 +203,10 @@ const getLinenPants = async (req, res) => {
   try {
     const products = await Product.find({ productCategory: "Linen Pants" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "If these pants were a member of the Beatles, they'd be...John Linens. Anyway, Linen Pants not found!",
-        });
+      return res.status(404).json({
+        message:
+          "If these pants were a member of the Beatles, they'd be...John Linens. Anyway, Linen Pants not found!",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -273,12 +267,9 @@ const getProductsOnSale = async (req, res) => {
   try {
     const products = await Product.find({ onSale: true });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "Looks like these pants sale'd away! No sale products found!",
-        });
+      return res.status(404).json({
+        message: "Looks like these pants sale'd away! No sale products found!",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -294,12 +285,10 @@ const getProductsLowStock = async (req, res) => {
       (product) => product.stockQuantity < 10 && product.stockQuantity >= 1
     );
     if (!lowStock) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "No low-stock products found! We'll give our supply-chain peeps a raise.",
-        });
+      return res.status(404).json({
+        message:
+          "No low-stock products found! We'll give our supply-chain peeps a raise.",
+      });
     }
     return res.json(lowStock);
   } catch (error) {
@@ -315,12 +304,10 @@ const getProductsHighlyRated = async (req, res) => {
       (product) => parseFloat(product.rating) >= 4.7
     );
     if (!highlyrated) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "Products not found! Dont worry, you're stil highly rated to us.",
-        });
+      return res.status(404).json({
+        message:
+          "Products not found! Dont worry, you're stil highly rated to us.",
+      });
     }
     return res.json(highlyrated);
   } catch (error) {
@@ -333,11 +320,9 @@ const getProductsS = async (req, res) => {
   try {
     const products = await Product.find({ size: "S" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message: "No small pants found! All of our pants are a HUGE deal.",
-        });
+      return res.status(404).json({
+        message: "No small pants found! All of our pants are a HUGE deal.",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -349,11 +334,9 @@ const getProductsM = async (req, res) => {
   try {
     const products = await Product.find({ size: "M" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message: "No medium pants found! All of our pants are a HUGE deal.",
-        });
+      return res.status(404).json({
+        message: "No medium pants found! All of our pants are a HUGE deal.",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -365,12 +348,10 @@ const getProductsL = async (req, res) => {
   try {
     const products = await Product.find({ size: "L" });
     if (!products) {
-      return res
-        .status(404)
-        .json({
-          message:
-            "No large pants found! All of our pants are an EXTRA LARGE deal.",
-        });
+      return res.status(404).json({
+        message:
+          "No large pants found! All of our pants are an EXTRA LARGE deal.",
+      });
     }
     return res.json(products);
   } catch (error) {
@@ -392,8 +373,12 @@ const getProductsXL = async (req, res) => {
   }
 };
 // colors available
-// const blues = await Product.find({ color: { $in: ["Blue", "Red and Blue", "Navy", "Dark Indigo", "Teal"] } })
-// const greens = await Product.find({ color: { $in: ["Teal", "Olive", "Green"] } })
+const blues = await Product.find({
+  color: { $in: ["Blue", "Red and Blue", "Navy", "Dark Indigo", "Teal"] },
+});
+const greens = await Product.find({
+  color: { $in: ["Teal", "Olive", "Green"] },
+});
 
 // CUD functions below:
 // create a product
