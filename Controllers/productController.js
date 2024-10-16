@@ -236,15 +236,84 @@ const getProductsOnSale = async (req, res) => {
     }
 }
 
-//still working on below
-// const getProductsHighlyRated = (req, res)=> {
-//     try {
-//     const rating = await parseFloat(Product.rating)
-//     const products = await Product.filter(product => product.rating >= 4.7)
-//     res.json(product)
-// }
-// in stock
-// low stock? 
+// get all products low in stock
+const getProductsLowStock = async (req, res) => {
+    try {
+    const products = await Product.find()
+    const lowStock = products.filter(product => product.stockQuantity < 10 && product.stockQuantity >= 1)
+    if (!lowStock) {
+        return res.status(404).json({message: "No low-stock products found! We'll give our supply-chain peeps a raise."})
+    }
+    return res.json(lowStock)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+// get products rated at or higher than 4.7
+const getProductsHighlyRated = async (req, res)=> {
+    try {
+    const products = await Product.find()
+    const highlyrated = products.filter(product => parseFloat(product.rating) >= 4.7)
+    if (!highlyrated) {
+        return res.status(404).json({message: "Products not found! Dont worry, you're stil highly rated to us."})
+    }
+    return res.json(highlyrated)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+
+// get products based on specific size 
+const getProductsS = async (req, res) => {
+    try {
+    const products = await Product.find({ size: "S" })
+    if (!products) {
+        return res.status(404).json({message: "No small pants found! All of our pants are a HUGE deal."})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getProductsM = async (req, res) => {
+    try {
+    const products = await Product.find({ size: "M" })
+    if (!products) {
+        return res.status(404).json({message: "No medium pants found! All of our pants are a HUGE deal."})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getProductsL = async (req, res) => {
+    try {
+    const products = await Product.find({ size: "L" })
+    if (!products) {
+        return res.status(404).json({message: "No large pants found! All of our pants are an EXTRA LARGE deal."})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+
+const getProductsXL = async (req, res) => {
+    try {
+    const products = await Product.find({ size: "XL" })
+    if (!products) {
+        return res.status(404).json({message: "No extra large pants found! Extra bummer! :("})
+    }
+    return res.json(products)
+    }   catch(error) {
+        res.status(500).json({message: error.message})
+    }
+}
+// colors available
 
 
 // CRUD routes
@@ -300,16 +369,24 @@ module.exports = {
     getCulottes,
     getLeggings,
     getFlarePants,
-    createProduct,
-    updateProduct,
-    deleteProduct,
-    getProductsMaxPrice,
-    getProductsPriceAscending,
     getDrawstringPants,
     getPatternedPants,
     getChinos,
     getPalazzoPants,
     getLinenPants,
+    getProductsMaxPrice,
+    getProductsPriceAscending,
     getProductsPriceDescending,
-    getProductsOnSale
+    getProductsOnSale,
+    getProductsLowStock,
+    getProductsHighlyRated,
+    getProductsS,
+    getProductsM,
+    getProductsL,
+    getProductsXL,
+
+
+    createProduct,
+    updateProduct,
+    deleteProduct,
 }

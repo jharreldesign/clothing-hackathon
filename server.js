@@ -16,8 +16,9 @@ app.get('/', async (req, res) => {
     res.send("our pants!! they're on fire!!")
 })
 
-// index routes //
-app.get('/products', productController.getAllProducts);
+// index routes
+app.get('/products', productController.getAllProducts)
+app.get('/users', userController.getAllUsers)
 
 app.get('/products/leggings', productController.getLeggings)
 app.get('/products/jeans', productController.getJeans)
@@ -36,10 +37,14 @@ app.get('/products/onSale', productController.getProductsOnSale)
 
 app.get('/products/price/ascending', productController.getProductsPriceAscending)
 app.get('/products/price/descending', productController.getProductsPriceDescending)
+app.get('/products/rating/high', productController.getProductsHighlyRated)
 
 // show routes
 app.get('/products/:id', productController.getProductById)
+app.get('/users/:id', userController.getUserById)
+
 app.get('/products/brands/:brand', productController.getProductsByBrand)
+app.get('/users/name/:name', userController.getUserByName)
 app.get('/products/price/:max', productController.getProductsMaxPrice)
 
 // crud routes
