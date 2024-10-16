@@ -16,6 +16,36 @@ app.get('/', async (req, res) => {
     res.send("our pants!! they're on fire!!")
 })
 
+// index routes
+app.get('/products', productController.getAllProducts)
+
+app.get('/products/leggings', productController.getLeggings)
+app.get('/products/jeans', productController.getJeans)
+app.get('/products/sweatpants', productController.getSweatpants)
+app.get('/products/skinnyjeans', productController.getSkinnyJeans)
+app.get('/products/cargopants', productController.getCargoPants)
+app.get('/products/flarepants', productController.getFlarePants)
+app.get('/products/culottes', productController.getCulottes)
+app.get('/products/joggers', productController.getJoggers)
+app.get('/products/drawstringpants', productController.getDrawstringPants)
+app.get('/products/patternedpants', productController.getPatternedPants)
+app.get('/products/chinos', productController.getChinos)
+app.get('/products/palazzppants', productController.getPalazzpPants)
+app.get('/products/linenpants', productController.getLinenPants)
+
+app.get('/products/price/ascending', productController.getProductsPriceAscending)
+
+// show routes
+app.get('/products/:id', productController.getProductById)
+app.get('/products/brands/:brand', productController.getProductsByBrand)
+app.get('/products/price/:max', productController.getProductsMaxPrice)
+
+// crud routes
+app.post('/product', productController.createProduct)
+app.put('/product/:id', productController.updateProduct)
+app.delete('/product/:id', productController.deleteProduct)
+
+
 app.listen(PORT, () => {
     console.log(`Express server listening on port ${PORT}`)
   })
