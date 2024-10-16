@@ -13,7 +13,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 
 app.get('/', async (req, res) => {
-    res.send("our pants!! they're on fire!!")
+    res.send("Our pants!! They're on fire!!")
 })
 
 // index routes
@@ -38,6 +38,10 @@ app.get('/products/onSale', productController.getProductsOnSale)
 app.get('/products/price/ascending', productController.getProductsPriceAscending)
 app.get('/products/price/descending', productController.getProductsPriceDescending)
 app.get('/products/rating/high', productController.getProductsHighlyRated)
+app.get('/products/size/s', productController.getProductsS)
+app.get('/products/size/m', productController.getProductsM)
+app.get('/products/size/l', productController.getProductsL)
+app.get('/products/size/xl', productController.getProductsXL)
 
 // show routes
 app.get('/products/:id', productController.getProductById)

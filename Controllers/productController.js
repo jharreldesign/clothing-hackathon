@@ -264,7 +264,6 @@ const getProductsHighlyRated = async (req, res)=> {
     }
 }
 
-
 // get products based on specific size 
 const getProductsS = async (req, res) => {
     try {
@@ -314,10 +313,11 @@ const getProductsXL = async (req, res) => {
     }
 }
 // colors available
+const blues = await Product.find({ color: { $in: ["Blue", "Red and Blue", "Navy", "Dark Indigo", "Teal"] } })
+const greens = await Product.find({ color: { $in: ["Teal", "Olive", "Green"] } })
 
 
-// CRUD routes
-
+// CUD functions below:
 // create a product
 const createProduct = async (req, res) => {
     try {
