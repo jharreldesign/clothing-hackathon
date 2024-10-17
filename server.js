@@ -1,5 +1,5 @@
 const express = require("express")
-const cors = require("cors")
+const cors = require('cors')
 const PORT = process.env.PORT || 3001
 const db = require("./db")
 const bodyParser = require("body-parser")
@@ -37,6 +37,7 @@ app.get("/products/chinos", productController.getChinos)
 app.get("/products/palazzopants", productController.getPalazzoPants)
 app.get("/products/linenpants", productController.getLinenPants)
 app.get("/products/onSale", productController.getProductsOnSale)
+app.get('/products/lowstock', productController.getProductsLowStock)
 
 app.get(
   "/products/price/ascending",
@@ -51,6 +52,13 @@ app.get("/products/size/s", productController.getProductsS)
 app.get("/products/size/m", productController.getProductsM)
 app.get("/products/size/l", productController.getProductsL)
 app.get("/products/size/xl", productController.getProductsXL)
+app.get('/products/color/blues', productController.getProductsBlues)
+app.get('/products/color/blacks', productController.getProductsBlacks)
+app.get('/products/color/greens', productController.getProductsGreens)
+app.get('/products/color/neutrals', productController.getProductsNeutrals)
+app.get('/products/color/reds', productController.getProductsReds)
+app.get('/products/color/multicolored', productController.getProductsMulticolored)
+app.get('/products/color/grayscale', productController.getProductsGrayscale)
 
 // show routes
 app.get("/products/:id", productController.getProductById)
@@ -59,14 +67,18 @@ app.get("/carts/:id", cartController.getCartById)
 app.get("/cart/:userId", cartController.getCartByUserId)
 
 app.get("/products/brands/:brand", productController.getProductsByBrand)
-app.get("/users/name/:name", userController.getUserByName)
 app.get("/products/price/:max", productController.getProductsMaxPrice)
+app.get("/users/name/:name", userController.getUserByName)
 
 // crud routes
 app.post("/product", productController.createProduct)
-app.put("/product/:id", productController.updateProduct)
-app.delete("/product/:id", productController.deleteProduct)
+app.post("/cart", cartController.createCart)
 app.post("/users", userController.createUser)
+app.put("/product/:id", productController.updateProduct)
+app.put("/cart/:id", cartController.updateCart)
+//app.put('/cart/additem/:id', cartController.addItemToCart)
+app.delete("/product/:id", productController.deleteProduct)
+app.delete("/cart/:id", cartController.deleteCart)
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`)

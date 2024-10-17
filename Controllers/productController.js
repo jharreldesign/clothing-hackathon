@@ -229,12 +229,12 @@ const getLinenPants = async (req, res) => {
 // get products filtered at or below max price input
 const getProductsMaxPrice = async (req, res) => {
   try {
-    const { max } = parseFloat(req.params)
+    const max = parseFloat(req.params.max)
+    if (isNaN(max)) {
+      return res.status(400).send("Please enter a valid maximum price");
+  }
     const products = await Product.find()
     const sortedProducts = products.filter(product => product.productPrice <= max)
-    if (!max) {
-        return res.send("Please enter a valid maximum price")
-    }
     if (!sortedProducts || sortedProducts.length === 0) {
       return res
         .status(404)
