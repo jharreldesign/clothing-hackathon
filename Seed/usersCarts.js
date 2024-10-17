@@ -1,18 +1,21 @@
 const db = require("../db")
 const { User, Cart } = require("../models")
+const { createSearchIndex } = require("../models/cart")
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"))
 
 const seedUsersAndCarts = async () => {
   try {
+    await Cart.deleteMany()
+    await User.deleteMany()
     const exampleCart = await new Cart({
       items: [
         {
-          productId: "670ffa00f2bc4ce66a63ea0d",
+          productId: "67104dccc72fcf6c2e24cef4",
           quantity: 1,
         },
         {
-          productId: "670ffa00f2bc4ce66a63ea16",
+          productId: "67104dccc72fcf6c2e24cefd",
           quantity: 2,
         },
       ],

@@ -21,6 +21,7 @@ app.get("/", async (req, res) => {
 // index routes
 app.get("/products", productController.getAllProducts)
 app.get("/users", userController.getAllUsers)
+app.get("/carts", cartController.getAllCarts)
 
 app.get("/products/leggings", productController.getLeggings)
 app.get("/products/jeans", productController.getJeans)
@@ -62,6 +63,8 @@ app.get('/products/color/grayscale', productController.getProductsGrayscale)
 // show routes
 app.get("/products/:id", productController.getProductById)
 app.get("/users/:id", userController.getUserById)
+app.get("/carts/:id", cartController.getCartById)
+app.get("/cart/:userId", cartController.getCartByUserId)
 
 app.get("/products/brands/:brand", productController.getProductsByBrand)
 app.get("/products/price/:max", productController.getProductsMaxPrice)
