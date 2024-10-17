@@ -11,11 +11,11 @@ const seedUsersAndCarts = async () => {
     const exampleCart = await new Cart({
       items: [
         {
-          productId: "67104dccc72fcf6c2e24cef4",
+          productId: "67113889b9ac8bc74f8446fb",
           quantity: 1,
         },
         {
-          productId: "67104dccc72fcf6c2e24cefd",
+          productId: "67113889b9ac8bc74f844704",
           quantity: 2,
         },
       ],

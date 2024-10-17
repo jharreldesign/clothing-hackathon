@@ -137,7 +137,7 @@ const products = [
     productPrice: 50.0,
     productCategory: "Patterned Pants",
     stockQuantity: 55,
-    imageUrl: "images/Pants_Labyrinth.jpeg",
+    imageUrl: "../images/Pants_Labyrinth.jpeg",
     brand: "MazeWear",
     rating: "4.5",
     onSale: false,
