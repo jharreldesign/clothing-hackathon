@@ -2,6 +2,8 @@ const baseURL = "http://localhost:3001"
 
 const userId = `671138bfed0915d375eaa510`
 
+const testingThisThing = ""
+
 const fetchCartData = async () => {
   try {
     const response = await fetch(`http://localhost:3001/carts/${userId}`)
